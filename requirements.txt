@@ -9,3 +9,5 @@ pydantic
 pydantic-settings
 logging
 groq
+pytest
+pytest-mock
