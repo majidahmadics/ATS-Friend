@@ -3,6 +3,7 @@
 ## Overview
 
 ATS-Friend is a web application designed to help job seekers create highly ATS (Applicant Tracking System)-friendly CVs and cover letters. It leverages the power of Large Language Models (LLMs) to generate tailored documents based on your job description and personal resume data, significantly increasing your chances of passing initial screenings and impressing hiring managers.
+You can try the live application [Here](https://ats-friend-4ec3e8861eac.herokuapp.com/).
 
 ## Features
 
