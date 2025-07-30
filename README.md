@@ -17,11 +17,6 @@ ATS-Friend is a web application designed to help job seekers create highly ATS (
 * **Streamlit**: Used for building the interactive web user interface.
 * **LLM (Groq)**: Powers the intelligent generation of CVs, cover letters, and assessments by utilizing the Groq API with the `llama-3.3-70b-versatile` model.
 * **Heroku**: Deployment platform for the application.
-* **FastAPI**: Used for building APIs.
-* **SQLAlchemy**: An ORM (Object Relational Mapper) for database interactions.
-* **Uvicorn**: An ASGI server for running FastAPI applications.
-* **Alembic**: Database migration tool.
-* **Passlib**: Provides secure password hashing utilities.
 * **Python-dotenv**: Manages environment variables for secure API key handling.
 
 ## Setup and Installation
