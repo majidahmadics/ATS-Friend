@@ -1,13 +1,5 @@
-fastapi[standard]
-SQLAlchemy
-uvicorn[standard]
-alembic
-passlib[bcrypt]
 openai
 python-dotenv
-pydantic
-pydantic-settings
-logging
 groq
-pytest
-pytest-mock
+streamlit
+crawl4ai
