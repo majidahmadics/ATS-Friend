@@ -1,6 +1,7 @@
 import uvicorn
-from fastapi import FastAPI, UploadFile, File, Form
 import shutil
+from fastapi import FastAPI, UploadFile, File, Form
+from ..services.pdf_parser import PDFParser
 
 app = FastAPI(
     title="ATS Friend",
@@ -17,13 +18,20 @@ async def health_check():
 
 @app.post("/upload_resume")
 async def upload_resume(file: UploadFile = File(...)):
-    try:
-        with open(f"uploaded_{file.filename}.pdf", "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-        return {"file": f"uploaded_{file.filename}.pdf", "message": "Resume uploaded successfully."}
-    except Exception as e:
-        return {"error": str(e)}
+    if not file.filename.lower().endswith(".pdf"):
+        return {"error": "Invalid file type. Only PDF files are allowed."}
     
+    try:
+        extracted_text = PDFParser.extract_text_from_pdf(file.file)
+
+        if extracted_text:
+            return {"file": f"uploaded_{file.filename}.pdf", "message": "Resume uploaded successfully.",
+                "extracted_text": extracted_text}
+        else:
+            return {"error": "Failed to extract text from the PDF file."}
+    except Exception as e:
+        return {"error": f"An error occurred while processing the file: {e}"}
+
 @app.get("/enter_job_info")
 async def enter_job_info(job_description: str = Form(...), resume_data: str = Form(...)):
     return {"job_description": job_description, "resume_data": resume_data}
